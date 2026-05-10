@@ -4,13 +4,14 @@
 
 | Day | 主題 | 檔案 | 狀態 |
 |-----|------|------|------|
-| 01 | 指針基礎 | day01_pointer_basic/ | [x] ex1a [x] ex1b [x] ex1c |
+| 01 | 指針基礎 | day01_pointer_basic/ | [x] ex1a [x] ex1b [x] ex1c [ ] ex1d [ ] ex1e |
 | 02 | struct / union | day02_struct/ | [ ] ex2a [ ] ex2b [ ] ex2c |
 | 03 | 動態記憶體 | day03_memory/ | [ ] ex3a [ ] ex3b |
 | 04 | Function Pointer | day04_pointer_advanced/ | [ ] ex4a |
 | 05 | Bit 操作 | day05_bitop/ | [ ] ex5a |
 | 06 | 記憶體佈局 / volatile | day06_memory_layout/ | [ ] ex6a |
 | 07 | Linked List | day07_linked_list/ | [ ] ex7a |
+| 08 | 嵌入式特有寫法 | daily/Embedding_code/ | [ ] emb1_bitwise [ ] emb2_volatile [ ] emb3_callback |
 
 ## 使用方式
 
