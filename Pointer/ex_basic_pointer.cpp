@@ -42,15 +42,45 @@
 
 void swap(int *a, int *b) {
     // TODO: 在此實作
+    int temp_num = *a;
+    *a = *b;
+    *b = temp_num;
 }
 
 int sum_array(const int *arr, int n) {
     // TODO: 在此實作（禁用 arr[i] 語法）
-    return 0;
+
+    int sum = 0;
+    const int *p = arr;
+    for (int i = 0; i < n; i++)
+    {
+        sum +=*p;
+        p++;
+    }
+
+    return sum;
 }
 
 void find_min_max(const int *arr, int n, int *out_min, int *out_max) {
     // TODO: 在此實作
+    int min = arr[0];
+    int max = arr[0];
+
+    for(int i = 0; i < n; i++)
+    {
+        if(arr[i] < min)
+        {
+            min = arr[i];
+        }
+        else if(arr[i] > max)
+        {
+            max = arr[i];
+        }
+    }
+
+    *out_min = min;
+    *out_max = max;
+
 }
 
 int main(void) {
