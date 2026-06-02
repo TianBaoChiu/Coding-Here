@@ -65,10 +65,63 @@ struct CommandConfig
 int parse_command(const char *input, CommandConfig *out_config)
 {
     // TODO: 在此實作
-    (void)input;
-    (void)out_config;
+    const char* p_input = input;
+    const char* mode_string = "MODE";
+    const char* en_string = "EN";
+    int mode;
+    int en;
+    if(input == NULL || out_config == NULL)
+        return -1;
 
-    return -1;
+    for(int i = 0; i < 4; i++)
+    {
+        if(*p_input != *mode_string)
+            return -2;
+
+        p_input++;
+        mode_string++;
+    }
+
+    if(*p_input != '=')
+        return -2;
+
+    p_input++;
+    //mode 檢驗
+    if(*p_input < '0' || *p_input > '3')
+        return -2;
+    mode = (int)(*p_input - 0x30);
+    p_input++;
+    if(*p_input != ';')
+        return -2;
+    p_input++;
+
+
+
+    for(int i = 0 ; i < 2; i++)
+    {
+        if(*p_input != *en_string)
+            return -2;
+
+        p_input++;
+        en_string++;
+    }
+
+    if(*p_input != '=')
+        return -2;
+    p_input++;
+
+    if(*p_input != '0' && *p_input != '1')
+        return -2;
+    en = (int)(*p_input - 0x30);
+
+    p_input++;
+    if(*p_input != '\0')
+        return -2;
+
+    out_config->mode = mode;
+    out_config->enabled = en;
+
+    return 0;
 }
 
 static void print_result(const char *case_name, int result, const CommandConfig *config)
