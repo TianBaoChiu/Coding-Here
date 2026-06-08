@@ -80,27 +80,51 @@ typedef struct
 
 int rb_init(RingBuffer *rb, unsigned char *storage, unsigned int capacity)
 {
-    // TODO: 在此實作
-    (void)rb;
-    (void)storage;
-    (void)capacity;
+    if(rb == NULL || storage == NULL || capacity <= 1)
+        return RB_INVALID_ARG;
 
-    return RB_INVALID_ARG;
+    rb->storage = storage;
+    rb->capacity = capacity;
+    rb->head = 0;
+    rb->tail = 0;
+    rb->count = 0;
+    return RB_OK;
 }
 
 unsigned int rb_count(const RingBuffer *rb)
 {
-    // TODO: 在此實作
-    (void)rb;
+    if(rb == NULL)
+        return 0;
 
-    return 0;
+
+    unsigned char* ptemp_storage = rb->storage;
+    unsigned int temp_count = 0;
+    
+
+    for(int i = 0; i < rb->capacity; i++)
+    {
+        if(*ptemp_storage != '\0')
+        {
+            temp_count++;
+            ptemp_storage++;
+        }
+        else
+            break;
+    }
+
+    return temp_count;
 }
 
 int rb_push(RingBuffer *rb, unsigned char byte)
 {
     // TODO: 在此實作
-    (void)rb;
-    (void)byte;
+    if(rb == NULL)
+        return RB_INVALID_ARG;
+
+    rb->storage[rb->head] = byte;
+    rb->head++;
+    rb->count++;
+    
 
     return RB_INVALID_ARG;
 }
