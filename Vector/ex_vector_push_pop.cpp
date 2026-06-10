@@ -67,22 +67,34 @@ int vec_push_byte(std::vector<unsigned char> *buffer,
                   unsigned char byte,
                   std::size_t max_capacity)
 {
-    // TODO: 在此實作
-    (void)buffer;
-    (void)byte;
-    (void)max_capacity;
+    //參數無效的情況
+    if(buffer == nullptr || max_capacity == 0)
+        return VEC_INVALID_ARG;
 
-    return VEC_INVALID_ARG;
+    //buffer填滿的情況
+    if(buffer->size() >= max_capacity)
+        return VEC_EMPTY_OR_FULL;
+
+    buffer->push_back(byte);
+
+    return VEC_OK;
 }
 
 int vec_pop_byte(std::vector<unsigned char> *buffer,
                  unsigned char *out_byte)
 {
-    // TODO: 在此實作
-    (void)buffer;
-    (void)out_byte;
+    if(buffer == nullptr || out_byte == nullptr)
+        return VEC_INVALID_ARG;
+    
+    if(buffer->size() == 0)
+        return VEC_EMPTY_OR_FULL;
+    
 
-    return VEC_INVALID_ARG;
+    *out_byte = buffer->back();
+
+    buffer->pop_back();
+
+    return VEC_OK;
 }
 
 static void print_buffer(const char *label,
